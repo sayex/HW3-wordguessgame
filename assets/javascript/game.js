@@ -12,7 +12,7 @@ var wordSelect = words[Math.floor(Math.random() * words.length)];
 //   // wordHidden.push("_");
 // }
 
-document.getElementById("wordGuess").textContent = wordSelect;
+document.getElementById("wordGuess").innerHTML = "word Select";
 
 // document.onkeypress = function(event) {
 //   var storedLetter = event.key;
