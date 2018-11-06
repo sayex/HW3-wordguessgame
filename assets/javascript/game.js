@@ -1,18 +1,32 @@
 var words = ["battleship", "chess"];
 var wordArray = [];
 var wordHidden = [];
-
 var correctLetters = [];
 var wrongGuessLetters = [];
-var wordSelect = words[Math.floor(Math.random() * words.length)];
+var wordSelect = 0;
 var isInWord = false;
 var NumberOfGuesses = 10;
-for (var i = 0; i < wordSelect.length; i++) {
-  wordArray.push(wordSelect.charAt(i));
-  wordHidden.push("_");
+var gameStared = false;
+
+function hidegame() {
+  document.getElementById("game").style.display = "none";
 }
 
-document.getElementById("wordGuess").innerHTML = wordHidden.join(" ");
+hidegame();
+
+function unhidegame() {
+  document.getElementById("game").style.display = "";
+}
+
+function selectword() {
+  wordSelect = words[Math.floor(Math.random() * words.length)];
+  for (var i = 0; i < wordSelect.length; i++) {
+    wordArray.push(wordSelect.charAt(i));
+    wordHidden.push("_");
+  }
+
+  document.getElementById("wordGuess").innerHTML = wordHidden.join(" ");
+}
 
 function wrongletter() {
   document.getElementById("guessedLetters").innerHTML = wrongGuessLetters.join(
@@ -22,19 +36,38 @@ function wrongletter() {
   document.getElementById("guessLeft").innerHTML = NumberOfGuesses;
 }
 
-document.onkeypress = function(event) {
-  var storedLetter = event.key;
-  for (var i = 0; i < wordArray.length; i++) {
-    if (wordArray[i] === storedLetter) {
-      correctLetters.push(storedLetter);
-      wordHidden.splice(i, 1, storedLetter);
-      document.getElementById("wordGuess").innerHTML = wordHidden.join(" ");
-      isInWord = true;
+function game() {
+  document.onkeypress = function(event) {
+    var storedLetter = event.key;
+    for (var i = 0; i < wordArray.length; i++) {
+      if (wordArray[i] === storedLetter) {
+        correctLetters.push(storedLetter);
+        wordHidden.splice(i, 1, storedLetter);
+        document.getElementById("wordGuess").innerHTML = wordHidden.join(" ");
+        isInWord = true;
+      }
     }
+    if (isInWord === false) {
+      wrongGuessLetters.push(storedLetter);
+      wrongletter();
+    }
+    isInWord = false;
+  };
+}
+
+function runGame() {
+  if (gameStared === true) {
+    selectword();
+    game();
   }
-  if (isInWord === false) {
-    wrongGuessLetters.push(storedLetter);
-    wrongletter();
-  }
-  isInWord = false;
+}
+
+function setGameToStart() {
+  gameStared = true;
+}
+document.onkeypress = function(event) {
+  document.getElementById("anyKey").style.display = "none";
+  setGameToStart();
+  runGame();
+  unhidegame();
 };
