@@ -1,22 +1,25 @@
 var words = ["battleship", "chess"];
 var wordarray = [];
-var guessedLetters = [];
+var wordhidden = [];
 var correctLetters = [];
 var wrongGuessLetters = [];
 var wordSelect = words[Math.floor(Math.random() * words.length)];
 
-function updateword() {
-  document.getElementById("wordGuess").innerHTML = wordSelect;
-}
-
 for (var i = 0; i < wordSelect.length; i++) {
   wordarray.push(wordSelect.charAt(i));
+  wordhidden.push("_");
 }
+console.log(wordhidden);
+document.getElementById("wordGuess").innerHTML = wordhidden.join(" ");
 
 document.onkeypress = function(event) {
-  var storedLetter = String.fromCharCode(event.key).toLowerCase();
-  guessedLetters.push(event.key);
-  console.log(guessedLetters);
-};
+  var storedLetter = event.key;
+  console.log(storedLetter);
 
-console.log(wordarray);
+  for (var i = 0; i < wordarray.length; i++) {
+    if (wordarray[i] === storedLetter) {
+      correctLetters.push(storedLetter);
+      console.log("correct Letter " + correctLetters);
+    }
+  }
+};
