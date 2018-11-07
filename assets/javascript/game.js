@@ -1,7 +1,7 @@
 var words = ["battleship", "chess"];
 var wordArray = [];
 var wordHidden = [];
-
+var score = 0;
 var wrongGuessLetters = [];
 var wordSelect = 0;
 var isInWord = false;
@@ -36,9 +36,26 @@ function wrongletter() {
   document.getElementById("guessLeft").innerHTML = NumberOfGuesses;
 }
 
+function newgame() {
+  alert("You Win!");
+  wordSelect = 0;
+  wordArray = [];
+  wordHidden = [];
+  wrongGuessLetters = [];
+  document.getElementById("guessedLetters").innerHTML = wrongGuessLetters.join(
+    " "
+  );
+  score++;
+  NumberOfGuesses = 10;
+  document.getElementById("score").innerHTML = score;
+  document.getElementById("guessLeft").innerHTML = NumberOfGuesses;
+  selectword();
+}
+
 function game() {
   document.onkeypress = function(event) {
-    var storedLetter = event.key;
+    var storedLetter = event.key.toLocaleLowerCase();
+
     for (var i = 0; i < wordArray.length; i++) {
       if (wordArray[i] === storedLetter) {
         wordHidden.splice(i, 1, storedLetter);
@@ -46,27 +63,27 @@ function game() {
         isInWord = true;
       }
     }
+
     if (isInWord === false) {
       wrongGuessLetters.push(storedLetter);
       wrongletter();
     }
     isInWord = false;
+
+    if (wordHidden.indexOf("_") === -1) {
+      wordHidden.splice(i, 1, storedLetter);
+      document.getElementById("wordGuess").innerHTML = wordHidden.join(" ");
+      newgame();
+    }
   };
 }
 
-function runGame() {
-  if (gameStared === true) {
+if (gameStared === false) {
+  document.onkeypress = function(event) {
+    document.getElementById("anyKey").style.display = "none";
+    gameStared = true;
     selectword();
+    unhidegame();
     game();
-  }
+  };
 }
-
-function setGameToStart() {
-  gameStared = true;
-}
-document.onkeypress = function(event) {
-  document.getElementById("anyKey").style.display = "none";
-  setGameToStart();
-  runGame();
-  unhidegame();
-};
