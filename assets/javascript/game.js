@@ -1,3 +1,5 @@
+//set my var
+
 var words = ["battleship", "chess"];
 var wordArray = [];
 var wordHidden = [];
@@ -8,11 +10,11 @@ var isInWord = false;
 var NumberOfGuesses = 10;
 var gameStared = false;
 
+// set my functions
+
 function hidegame() {
   document.getElementById("game").style.display = "none";
 }
-
-hidegame();
 
 function unhidegame() {
   document.getElementById("game").style.display = "";
@@ -24,7 +26,6 @@ function selectword() {
     wordArray.push(wordSelect.charAt(i));
     wordHidden.push("_");
   }
-
   document.getElementById("wordGuess").innerHTML = wordHidden.join(" ");
 }
 
@@ -34,10 +35,13 @@ function wrongletter() {
   );
   NumberOfGuesses--;
   document.getElementById("guessLeft").innerHTML = NumberOfGuesses;
+  if (NumberOfGuesses === 0) {
+    alert("Yuo Loose. Word was " + wordSelect);
+    newgame();
+  }
 }
 
 function newgame() {
-  alert("You Win!");
   wordSelect = 0;
   wordArray = [];
   wordHidden = [];
@@ -45,7 +49,6 @@ function newgame() {
   document.getElementById("guessedLetters").innerHTML = wrongGuessLetters.join(
     " "
   );
-  score++;
   NumberOfGuesses = 10;
   document.getElementById("score").innerHTML = score;
   document.getElementById("guessLeft").innerHTML = NumberOfGuesses;
@@ -73,11 +76,16 @@ function game() {
     if (wordHidden.indexOf("_") === -1) {
       wordHidden.splice(i, 1, storedLetter);
       document.getElementById("wordGuess").innerHTML = wordHidden.join(" ");
+      score++;
+      alert("You Win!");
       newgame();
     }
   };
 }
 
+// code when page loads and when to start game
+
+hidegame();
 if (gameStared === false) {
   document.onkeypress = function(event) {
     document.getElementById("anyKey").style.display = "none";
