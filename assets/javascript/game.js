@@ -1,7 +1,7 @@
 var words = ["battleship", "chess"];
 var wordArray = [];
 var wordHidden = [];
-var correctLetters = [];
+
 var wrongGuessLetters = [];
 var wordSelect = 0;
 var isInWord = false;
@@ -41,7 +41,6 @@ function game() {
     var storedLetter = event.key;
     for (var i = 0; i < wordArray.length; i++) {
       if (wordArray[i] === storedLetter) {
-        correctLetters.push(storedLetter);
         wordHidden.splice(i, 1, storedLetter);
         document.getElementById("wordGuess").innerHTML = wordHidden.join(" ");
         isInWord = true;
