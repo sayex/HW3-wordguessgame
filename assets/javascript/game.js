@@ -24,7 +24,7 @@ var words = [
   "trouble",
   "yahtzee",
   "chutes and ladders",
-  "connect 4",
+  "connect four",
   "cross and circle game",
   "scrabble",
   "thirteen dead end drive",
@@ -60,8 +60,9 @@ function unhidegame() {
 
 function selectword() {
   wordSelect = words[Math.floor(Math.random() * words.length)];
+  wordSelect = wordSelect.toUpperCase();
   for (var i = 0; i < wordSelect.length; i++) {
-    wordArray.push(wordSelect.charAt(i));
+    wordArray.push(wordSelect.charAt(i).toUpperCase());
     wordHidden.push("_");
   }
   for (var i = 0; i < wordSelect.length; i++) {
@@ -112,7 +113,7 @@ function winner() {
 
 function game() {
   document.onkeypress = function(event) {
-    var storedLetter = event.key.toLocaleLowerCase();
+    var storedLetter = event.key.toUpperCase();
 
     for (var i = 0; i < wordArray.length; i++) {
       if (wordArray[i] === storedLetter) {
