@@ -30,7 +30,6 @@ function selectword() {
 }
 
 function wrongletter() {
-  wrongGuessLetters.push(storedLetter);
   document.getElementById("guessedLetters").innerHTML = wrongGuessLetters.join(
     " "
   );
@@ -69,6 +68,7 @@ function game() {
     }
 
     if (isInWord === false) {
+      wrongGuessLetters.push(storedLetter);
       wrongletter();
     }
     isInWord = false;
@@ -77,7 +77,7 @@ function game() {
       wordHidden.splice(i, 1, storedLetter);
       setTimeout(function() {
         winner();
-      }, 100);
+      }, 1);
     }
   };
 }
