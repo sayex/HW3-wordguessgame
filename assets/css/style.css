@@ -17,3 +17,17 @@
   width: 50%;
   padding: 10px;
 }
+.numbers {
+  float: left;
+  margin: auto;
+  width: 50%;
+}
+
+.letters {
+  float: right;
+  width: 50%;
+  margin: atuo;
+}
+#guessedLetters {
+  font-size: 30px;
+}
