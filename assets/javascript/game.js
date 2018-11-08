@@ -1,3 +1,5 @@
+// words to guess
+
 var words = [
   "battleship",
   "chess",
@@ -20,8 +22,10 @@ var words = [
   "sorry",
   "totopoly",
   "trouble",
-  "yahtzee"
+  "yahtzee",
+  "choots and ladders"
 ];
+
 var wordArray = [];
 var wordHidden = [];
 var score = 0;
@@ -45,7 +49,13 @@ function selectword() {
     wordArray.push(wordSelect.charAt(i));
     wordHidden.push("_");
   }
-  document.getElementById("wordGuess").innerHTML = wordHidden.join(" ");
+  for (var i = 0; i < wordSelect.length; i++) {
+    if (wordSelect.charAt(i) === " ") {
+      wordHidden.splice(i, 1, wordSelect.charAt(i));
+    }
+  }
+  writeToScreen();
+  //  document.getElementById("wordGuess").innerHTML = wordHidden.join("");
 }
 
 function wrongletter() {
@@ -70,7 +80,7 @@ function newgame() {
 }
 
 function writeToScreen() {
-  document.getElementById("wordGuess").innerHTML = wordHidden.join(" ");
+  document.getElementById("wordGuess").innerHTML = wordHidden.join("");
   document.getElementById(
     "guessedLetters"
   ).innerHTML = wrongGuessedLetters.join(" ");

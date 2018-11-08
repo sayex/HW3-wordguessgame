@@ -3,3 +3,17 @@
   background-color: rgb(31, 29, 29);
   color: white;
 }
+
+#wordGuess {
+  font-size: 30px;
+}
+#catagory {
+  text-decoration: underline;
+}
+.mainWrapper {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  padding: 10px;
+}
