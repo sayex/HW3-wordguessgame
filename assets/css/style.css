@@ -14,8 +14,8 @@
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
-  padding: 10px;
+  width: 100%;
+  padding: 0px;
 }
 .numbers {
   float: left;
@@ -30,4 +30,14 @@
 }
 #guessedLetters {
   font-size: 20px;
+}
+
+#banner {
+  width: 40%;
+  height: auto;
+  margin: auto;
+}
+#screenUpdate {
+  width: 40%;
+  margin: auto;
 }
