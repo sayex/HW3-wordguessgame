@@ -1,6 +1,17 @@
 //set my var
 
-var words = ["battleship", "chess"];
+var words = [
+  "battleship",
+  "chess",
+  "blockade",
+  "checkers",
+  "go",
+  "camelot",
+  "risk",
+  "onyx",
+  "simon",
+  "stratego"
+];
 var wordArray = [];
 var wordHidden = [];
 var score = 0;
@@ -30,14 +41,13 @@ function selectword() {
 }
 
 function wrongletter() {
-  document.getElementById("guessedLetters").innerHTML = wrongGuessLetters.join(
-    " "
-  );
   NumberOfGuesses--;
-  document.getElementById("guessLeft").innerHTML = NumberOfGuesses;
+  writeToScreen();
   if (NumberOfGuesses === 0) {
-    alert("Yuo Loose. Word was " + wordSelect);
-    newgame();
+    setTimeout(function() {
+      alert("Good try. Word was " + wordSelect);
+      newgame();
+    }, 1);
   }
 }
 
@@ -46,13 +56,24 @@ function newgame() {
   wordArray = [];
   wordHidden = [];
   wrongGuessLetters = [];
+  NumberOfGuesses = 10;
+  selectword();
+  writeToScreen();
+}
+
+function writeToScreen() {
+  document.getElementById("wordGuess").innerHTML = wordHidden.join(" ");
   document.getElementById("guessedLetters").innerHTML = wrongGuessLetters.join(
     " "
   );
-  NumberOfGuesses = 10;
   document.getElementById("score").innerHTML = score;
   document.getElementById("guessLeft").innerHTML = NumberOfGuesses;
-  selectword();
+}
+
+function winner() {
+  score++;
+  alert("You Win!");
+  newgame();
 }
 
 function game() {
@@ -62,7 +83,7 @@ function game() {
     for (var i = 0; i < wordArray.length; i++) {
       if (wordArray[i] === storedLetter) {
         wordHidden.splice(i, 1, storedLetter);
-        document.getElementById("wordGuess").innerHTML = wordHidden.join(" ");
+        writeToScreen();
         isInWord = true;
       }
     }
@@ -84,11 +105,6 @@ function game() {
 
 // code when page loads and when to start game
 
-function winner() {
-  score++;
-  alert("You Win!");
-  newgame();
-}
 hidegame();
 if (gameStared === false) {
   document.onkeypress = function(event) {
