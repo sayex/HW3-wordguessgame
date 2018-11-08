@@ -48,6 +48,8 @@ var isInWord = false;
 var NumberOfGuesses = 10;
 var gameStared = false;
 
+//all functions to run and update game
+
 function hidegame() {
   document.getElementById("game").style.display = "none";
 }
@@ -68,7 +70,6 @@ function selectword() {
     }
   }
   writeToScreen();
-  //  document.getElementById("wordGuess").innerHTML = wordHidden.join("");
 }
 
 function wrongletter() {
@@ -107,6 +108,8 @@ function winner() {
   newgame();
 }
 
+// main game
+
 function game() {
   document.onkeypress = function(event) {
     var storedLetter = event.key.toLocaleLowerCase();
@@ -133,6 +136,8 @@ function game() {
     }
   };
 }
+
+//page load startup
 
 hidegame();
 if (gameStared === false) {
