@@ -5,7 +5,7 @@
 }
 
 #wordGuess {
-  font-size: 30px;
+  font-size: 20px;
 }
 #catagory {
   text-decoration: underline;
@@ -29,5 +29,5 @@
   margin: atuo;
 }
 #guessedLetters {
-  font-size: 30px;
+  font-size: 20px;
 }
