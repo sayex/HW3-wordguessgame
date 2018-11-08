@@ -86,6 +86,10 @@ function game() {
 
 // code when page loads and when to start game
 
+function winner() {
+  alert("You Win!");
+  newgame();
+}
 hidegame();
 if (gameStared === false) {
   document.onkeypress = function(event) {
