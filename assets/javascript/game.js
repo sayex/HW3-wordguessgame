@@ -27,7 +27,7 @@ var words = [
   "connect 4",
   "cross and circle game",
   "scrabble",
-  "13 dead end drive",
+  "thirteen dead end drive",
   "logo board game",
   "the game of life",
   "scene it",
