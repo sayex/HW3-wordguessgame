@@ -23,7 +23,20 @@ var words = [
   "totopoly",
   "trouble",
   "yahtzee",
-  "choots and ladders"
+  "chutes and ladders",
+  "connect 4",
+  "cross and circle game",
+  "scrabble",
+  "13 dead end drive",
+  "logo board game",
+  "the game of life",
+  "scene it",
+  "mouse trap",
+  "hungry hungery hippos",
+  "dont wake daddy",
+  "upwords",
+  "axis and alies",
+  "the farming game"
 ];
 
 var wordArray = [];
