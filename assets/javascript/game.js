@@ -75,10 +75,11 @@ function game() {
 
     if (wordHidden.indexOf("_") === -1) {
       wordHidden.splice(i, 1, storedLetter);
-      document.getElementById("wordGuess").innerHTML = wordHidden.join(" ");
+      // document.getElementById("wordGuess").innerHTML =  awwordHidden.join(" ");
       score++;
-      alert("You Win!");
-      newgame();
+      setTimeout(function() {
+        winner();
+      }, 200);
     }
   };
 }
