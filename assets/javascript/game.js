@@ -1,5 +1,3 @@
-//set my var
-
 var words = [
   "battleship",
   "chess",
@@ -10,18 +8,28 @@ var words = [
   "risk",
   "onyx",
   "simon",
-  "stratego"
+  "stratego",
+  "patchwork",
+  "doom",
+  "monopoly",
+  "clue",
+  "mahjong",
+  "pictionary",
+  "ra",
+  "rummikub",
+  "sorry",
+  "totopoly",
+  "trouble",
+  "yahtzee"
 ];
 var wordArray = [];
 var wordHidden = [];
 var score = 0;
-var wrongGuessLetters = [];
+var wrongGuessedLetters = [];
 var wordSelect = 0;
 var isInWord = false;
 var NumberOfGuesses = 10;
 var gameStared = false;
-
-// set my functions
 
 function hidegame() {
   document.getElementById("game").style.display = "none";
@@ -45,7 +53,7 @@ function wrongletter() {
   writeToScreen();
   if (NumberOfGuesses === 0) {
     setTimeout(function() {
-      alert("Good try. Word was " + wordSelect);
+      alert("Good try. Word was " + "'" + wordSelect + "'");
       newgame();
     }, 1);
   }
@@ -55,7 +63,7 @@ function newgame() {
   wordSelect = 0;
   wordArray = [];
   wordHidden = [];
-  wrongGuessLetters = [];
+  wrongGuessedLetters = [];
   NumberOfGuesses = 10;
   selectword();
   writeToScreen();
@@ -63,16 +71,16 @@ function newgame() {
 
 function writeToScreen() {
   document.getElementById("wordGuess").innerHTML = wordHidden.join(" ");
-  document.getElementById("guessedLetters").innerHTML = wrongGuessLetters.join(
-    " "
-  );
+  document.getElementById(
+    "guessedLetters"
+  ).innerHTML = wrongGuessedLetters.join(" ");
   document.getElementById("score").innerHTML = score;
   document.getElementById("guessLeft").innerHTML = NumberOfGuesses;
 }
 
 function winner() {
   score++;
-  alert("You Win!");
+  alert("You're such a smarty!");
   newgame();
 }
 
@@ -89,7 +97,7 @@ function game() {
     }
 
     if (isInWord === false) {
-      wrongGuessLetters.push(storedLetter);
+      wrongGuessedLetters.push(storedLetter);
       wrongletter();
     }
     isInWord = false;
@@ -102,8 +110,6 @@ function game() {
     }
   };
 }
-
-// code when page loads and when to start game
 
 hidegame();
 if (gameStared === false) {
