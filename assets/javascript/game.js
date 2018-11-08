@@ -30,6 +30,7 @@ function selectword() {
 }
 
 function wrongletter() {
+  wrongGuessLetters.push(storedLetter);
   document.getElementById("guessedLetters").innerHTML = wrongGuessLetters.join(
     " "
   );
@@ -68,18 +69,15 @@ function game() {
     }
 
     if (isInWord === false) {
-      wrongGuessLetters.push(storedLetter);
       wrongletter();
     }
     isInWord = false;
 
     if (wordHidden.indexOf("_") === -1) {
       wordHidden.splice(i, 1, storedLetter);
-      // document.getElementById("wordGuess").innerHTML =  awwordHidden.join(" ");
-      score++;
       setTimeout(function() {
         winner();
-      }, 200);
+      }, 100);
     }
   };
 }
@@ -87,6 +85,7 @@ function game() {
 // code when page loads and when to start game
 
 function winner() {
+  score++;
   alert("You Win!");
   newgame();
 }
