@@ -1,4 +1,4 @@
-//testing changing to object to store words
+//words as object
 
 var objectOfWords = {
   battleship: "assets/images/battleship.jpg",
@@ -55,11 +55,15 @@ var ObjectsIntoArray;
 function hidegame() {
   document.getElementById("game").style.display = "none";
 }
+
 // function unhide game after any key is pressed
+
 function unhidegame() {
   document.getElementById("game").style.display = "";
 }
+
 // function to find a word for the game and prepair/write it for the screen
+
 function selectword() {
   ObjectsIntoArray = Object.keys(objectOfWords);
   wordSelect =
@@ -102,6 +106,7 @@ function wrongletter() {
 }
 
 // clear var, reset screen, selected new word
+
 function newgame() {
   wordSelect = 0;
   wordArray = [];
@@ -113,6 +118,7 @@ function newgame() {
 }
 
 //update screen with changes during game play
+
 function writeToScreen() {
   document.getElementById("wordGuess").innerHTML = wordHidden.join("");
   document.getElementById(
@@ -125,6 +131,7 @@ function writeToScreen() {
 }
 
 // when user gueses word correctly
+
 function winner() {
   score++;
   document.getElementById("wordImg").style.display = "";
