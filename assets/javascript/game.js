@@ -1,5 +1,22 @@
 // words to guess
 
+var objectOfWords = {
+  battleship: "assets/images/chess.jpeg",
+  chess: "assets/images/chess.jpeg"
+};
+
+var newWord = [];
+var img;
+
+ObjectsIntoArray = Object.keys(objectOfWords);
+newWord = ObjectsIntoArray[Math.floor(Math.random() * ObjectsIntoArray.length)];
+img = objectOfWords[newWord];
+document.getElementById("wordImg").style.display = "";
+
+document.getElementById("wordImg").src = img;
+console.log(img);
+console.log(newWord);
+
 var words = [
   "battleship",
   "chess",
