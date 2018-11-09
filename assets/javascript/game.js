@@ -47,6 +47,7 @@ var wordSelect = 0;
 var isInWord = false;
 var NumberOfGuesses = 10;
 var gameStared = false;
+var storedLetter;
 
 //all functions to run and update game
 
@@ -109,36 +110,41 @@ function winner() {
   newgame();
 }
 
-// main game
+function checkLetterToWord() {
+  for (var i = 0; i < wordArray.length; i++) {
+    if (wordArray[i] === storedLetter) {
+      wordHidden.splice(i, 1, storedLetter);
+      writeToScreen();
+      isInWord = true;
+    }
+  }
+  if (isInWord === false) {
+    wrongGuessedLetters.push(storedLetter);
+    wrongletter();
+  }
+  isInWord = false;
+
+  if (wordHidden.indexOf("_") === -1) {
+    wordHidden.splice(i, 1, storedLetter);
+    setTimeout(function() {
+      winner();
+    }, 1);
+  }
+}
+
+function addFalseLetterToString() {}
+
+// Listenr for pressed letters
 
 function game() {
   document.onkeypress = function(event) {
-    var storedLetter = event.key.toUpperCase();
+    storedLetter = event.key.toUpperCase();
 
-    for (var i = 0; i < wordArray.length; i++) {
-      if (wordArray[i] === storedLetter) {
-        wordHidden.splice(i, 1, storedLetter);
-        writeToScreen();
-        isInWord = true;
-      }
-    }
-
-    if (isInWord === false) {
-      wrongGuessedLetters.push(storedLetter);
-      wrongletter();
-    }
-    isInWord = false;
-
-    if (wordHidden.indexOf("_") === -1) {
-      wordHidden.splice(i, 1, storedLetter);
-      setTimeout(function() {
-        winner();
-      }, 1);
-    }
+    checkLetterToWord();
   };
 }
 
-//page load startup
+//page load startup and key press listener
 
 hidegame();
 if (gameStared === false) {
