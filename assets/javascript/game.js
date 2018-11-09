@@ -66,8 +66,7 @@ function unhidegame() {
 
 function selectword() {
   ObjectsIntoArray = Object.keys(objectOfWords);
-  wordSelect =
-    ObjectsIntoArray[Math.floor(Math.random() * ObjectsIntoArray.length)];
+  wordSelect = ObjectsIntoArray[Math.floor(Math.random() * ObjectsIntoArray.length)];
   img = objectOfWords[wordSelect];
   for (var i = 0; i < wordSelect.length; i++) {
     wordArray.push(wordSelect.charAt(i).toUpperCase());
@@ -118,9 +117,7 @@ function newgame() {
 
 function writeToScreen() {
   document.getElementById("wordGuess").innerHTML = wordHidden.join("");
-  document.getElementById(
-    "guessedLetters"
-  ).innerHTML = wrongGuessedLetters.join(" ");
+  document.getElementById("guessedLetters").innerHTML = wrongGuessedLetters.join(" ");
   document.getElementById("score").innerHTML = score;
   document.getElementById("guessLeft").innerHTML = NumberOfGuesses;
   document.getElementById("wordImg").src = img;
