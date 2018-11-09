@@ -1,99 +1,43 @@
 //testing changing to object to store words
 
-function ObjectTest() {
-  var objectOfWords = {
-    battleship: "assets/images/battleship.jpg",
-    chess: "assets/images/chess.jpeg",
-    blockade: "",
-    checkers: "",
-    go: "",
-    camelot: "",
-    risk: "",
-    onyx: "",
-    simon: "",
-    stratego: "",
-    patchwork: "",
-    doom: "",
-    monopoly: "",
-    clue: "",
-    mahjong: "",
-    pictionary: "",
-    ra: "",
-    rummikub: "",
-    sorry: "",
-    totopoly: "",
-    trouble: "",
-    yahtzee: "",
-    "chutes and ladders": "assets/images/chess.jpeg",
-    "connect four": "",
-    "cross and circle game": "",
-    scrabble: "",
-    "thirteen dead end drive": "",
-    "logo board game": "",
-    "the game of life": "",
-    "scene it": "",
-    "mouse trap": "",
-    "hungry hungery hippos": "",
-    "dont wake daddy": "",
-    upwords: "",
-    "axis and alies": "",
-    "the farming game": ""
-  };
-
-  var newWord = [];
-  var img;
-
-  ObjectsIntoArray = Object.keys(objectOfWords);
-  newWord =
-    ObjectsIntoArray[Math.floor(Math.random() * ObjectsIntoArray.length)];
-  img = objectOfWords[newWord];
-  document.getElementById("wordImg").style.display = "";
-
-  document.getElementById("wordImg").src = img;
-  console.log(img);
-  console.log(newWord);
-}
-ObjectTest();
-
-// words to guess
-var words = [
-  "battleship",
-  "chess",
-  "blockade",
-  "checkers",
-  "go",
-  "camelot",
-  "risk",
-  "onyx",
-  "simon",
-  "stratego",
-  "patchwork",
-  "doom",
-  "monopoly",
-  "clue",
-  "mahjong",
-  "pictionary",
-  "ra",
-  "rummikub",
-  "sorry",
-  "totopoly",
-  "trouble",
-  "yahtzee",
-  "chutes and ladders",
-  "connect four",
-  "cross and circle game",
-  "scrabble",
-  "thirteen dead end drive",
-  "logo board game",
-  "the game of life",
-  "scene it",
-  "mouse trap",
-  "hungry hungery hippos",
-  "dont wake daddy",
-  "upwords",
-  "axis and alies",
-  "the farming game"
-];
+var objectOfWords = {
+  battleship: "assets/images/battleship.jpg",
+  chess: "assets/images/chess.jpeg",
+  blockade: "",
+  checkers: "",
+  go: "",
+  camelot: "",
+  risk: "",
+  onyx: "",
+  simon: "",
+  stratego: "",
+  patchwork: "",
+  doom: "",
+  monopoly: "",
+  clue: "",
+  mahjong: "",
+  pictionary: "",
+  ra: "",
+  rummikub: "",
+  sorry: "",
+  totopoly: "",
+  trouble: "",
+  yahtzee: "",
+  "chutes and ladders": "assets/images/chess.jpeg",
+  "connect four": "",
+  "cross and circle game": "",
+  scrabble: "",
+  "thirteen dead end drive": "",
+  "logo board game": "",
+  "the game of life": "",
+  "scene it": "",
+  "mouse trap": "",
+  "hungry hungery hippos": "",
+  "dont wake daddy": "",
+  upwords: "",
+  "axis and alies": "",
+  "the farming game": ""
+};
 
 var wordArray = [];
 var wordHidden = [];
@@ -103,6 +47,8 @@ var wordSelect = 0;
 var NumberOfGuesses = 10;
 var gameStared = false;
 var storedLetter;
+var img;
+var ObjectsIntoArray;
 
 //all functions to run and update game
 
@@ -115,8 +61,11 @@ function unhidegame() {
 }
 
 function selectword() {
-  wordSelect = words[Math.floor(Math.random() * words.length)];
-  wordSelect = wordSelect.toUpperCase();
+  ObjectsIntoArray = Object.keys(objectOfWords);
+  wordSelect =
+    ObjectsIntoArray[Math.floor(Math.random() * ObjectsIntoArray.length)];
+  wordSelect = wordSelect;
+  img = objectOfWords[wordSelect];
   for (var i = 0; i < wordSelect.length; i++) {
     wordArray.push(wordSelect.charAt(i).toUpperCase());
     wordHidden.push("_");
@@ -167,6 +116,7 @@ function writeToScreen() {
   ).innerHTML = wrongGuessedLetters.join(" ");
   document.getElementById("score").innerHTML = score;
   document.getElementById("guessLeft").innerHTML = NumberOfGuesses;
+  document.getElementById("wordImg").src = img;
   document.getElementById("wordImg").style.display = "none";
 }
 
