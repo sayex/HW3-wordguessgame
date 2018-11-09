@@ -23,7 +23,7 @@ var objectOfWords = {
   totopoly: "",
   trouble: "",
   yahtzee: "",
-  "chutes and ladders": "assets/images/chess.jpeg",
+  "chutes and ladders": "",
   "connect four": "",
   "cross and circle game": "",
   scrabble: "",
@@ -50,16 +50,16 @@ var storedLetter;
 var img;
 var ObjectsIntoArray;
 
-//all functions to run and update game
+//hide game function for start up
 
 function hidegame() {
   document.getElementById("game").style.display = "none";
 }
-
+// function unhide game after any key is pressed
 function unhidegame() {
   document.getElementById("game").style.display = "";
 }
-
+// function to find a word for the game and prepair/write it for the screen
 function selectword() {
   ObjectsIntoArray = Object.keys(objectOfWords);
   wordSelect =
@@ -77,6 +77,8 @@ function selectword() {
   }
   writeToScreen();
 }
+
+//when a wrong letter is pressed
 
 function wrongletter() {
   var isInWrongLetter = false;
@@ -99,6 +101,7 @@ function wrongletter() {
   isInWrongLetter = false;
 }
 
+// clear var, reset screen, selected new word
 function newgame() {
   wordSelect = 0;
   wordArray = [];
@@ -109,6 +112,7 @@ function newgame() {
   writeToScreen();
 }
 
+//update screen with changes during game play
 function writeToScreen() {
   document.getElementById("wordGuess").innerHTML = wordHidden.join("");
   document.getElementById(
@@ -120,6 +124,7 @@ function writeToScreen() {
   document.getElementById("wordImg").style.display = "none";
 }
 
+// when user gueses word correctly
 function winner() {
   score++;
   document.getElementById("wordImg").style.display = "";
@@ -128,6 +133,8 @@ function winner() {
     newgame();
   }, 10);
 }
+
+//when a letter is typed check to see if its in the word or if not
 
 function checkLetterToWord() {
   var isInWord = false;
@@ -149,7 +156,7 @@ function checkLetterToWord() {
   }
 }
 
-// Listenr for pressed letters
+// Listener for pressed letters
 
 function game() {
   document.onkeypress = function(event) {
