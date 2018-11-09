@@ -44,7 +44,6 @@ var wordHidden = [];
 var score = 0;
 var wrongGuessedLetters = [];
 var wordSelect = 0;
-var isInWord = false;
 var NumberOfGuesses = 10;
 var gameStared = false;
 var storedLetter;
@@ -75,14 +74,24 @@ function selectword() {
 }
 
 function wrongletter() {
-  NumberOfGuesses--;
-  writeToScreen();
+  var isInWrongLetter = false;
+  for (i = 0; i < wrongGuessedLetters.length; i++) {
+    if (wrongGuessedLetters[i] === storedLetter) {
+      isInWrongLetter = true;
+    }
+  }
+  if (isInWrongLetter === false) {
+    wrongGuessedLetters.push(storedLetter);
+    NumberOfGuesses--;
+    writeToScreen();
+  }
   if (NumberOfGuesses === 0) {
     setTimeout(function() {
       alert("Good try. Word was " + "'" + wordSelect + "'");
       newgame();
     }, 1);
   }
+  isInWrongLetter = false;
 }
 
 function newgame() {
@@ -111,6 +120,7 @@ function winner() {
 }
 
 function checkLetterToWord() {
+  var isInWord = false;
   for (var i = 0; i < wordArray.length; i++) {
     if (wordArray[i] === storedLetter) {
       wordHidden.splice(i, 1, storedLetter);
@@ -119,7 +129,6 @@ function checkLetterToWord() {
     }
   }
   if (isInWord === false) {
-    wrongGuessedLetters.push(storedLetter);
     wrongletter();
   }
   isInWord = false;
@@ -131,8 +140,6 @@ function checkLetterToWord() {
     }, 1);
   }
 }
-
-function addFalseLetterToString() {}
 
 // Listenr for pressed letters
 
