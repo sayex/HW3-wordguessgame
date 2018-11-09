@@ -6,6 +6,7 @@
 
 #wordGuess {
   font-size: 20px;
+  letter-spacing: 4px;
 }
 #catagory {
   text-decoration: underline;
@@ -20,16 +21,17 @@
 .numbers {
   float: left;
   margin: auto;
+  margin-bottom: 50px;
   width: 50%;
 }
 
 .letters {
-  float: right;
+  float: left;
   width: 50%;
-  margin: atuo;
+  margin: auto;
 }
 #guessedLetters {
-  font-size: 20px;
+  clear: both;
 }
 
 #banner {
@@ -39,5 +41,17 @@
 }
 #screenUpdate {
   width: 40%;
+  margin: auto;
+}
+
+.wordImg {
+  width: 40%;
+  height: auto;
+  margin: auto;
+  margin-top: 10px;
+}
+#wordImg {
+  width: 200px;
+  height: auto;
   margin: auto;
 }

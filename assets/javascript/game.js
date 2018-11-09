@@ -1,22 +1,61 @@
+//testing changing to object to store words
+
+function ObjectTest() {
+  var objectOfWords = {
+    battleship: "assets/images/battleship.jpg",
+    chess: "assets/images/chess.jpeg",
+    blockade: "",
+    checkers: "",
+    go: "",
+    camelot: "",
+    risk: "",
+    onyx: "",
+    simon: "",
+    stratego: "",
+    patchwork: "",
+    doom: "",
+    monopoly: "",
+    clue: "",
+    mahjong: "",
+    pictionary: "",
+    ra: "",
+    rummikub: "",
+    sorry: "",
+    totopoly: "",
+    trouble: "",
+    yahtzee: "",
+    "chutes and ladders": "assets/images/chess.jpeg",
+    "connect four": "",
+    "cross and circle game": "",
+    scrabble: "",
+    "thirteen dead end drive": "",
+    "logo board game": "",
+    "the game of life": "",
+    "scene it": "",
+    "mouse trap": "",
+    "hungry hungery hippos": "",
+    "dont wake daddy": "",
+    upwords: "",
+    "axis and alies": "",
+    "the farming game": ""
+  };
+
+  var newWord = [];
+  var img;
+
+  ObjectsIntoArray = Object.keys(objectOfWords);
+  newWord =
+    ObjectsIntoArray[Math.floor(Math.random() * ObjectsIntoArray.length)];
+  img = objectOfWords[newWord];
+  document.getElementById("wordImg").style.display = "";
+
+  document.getElementById("wordImg").src = img;
+  console.log(img);
+  console.log(newWord);
+}
+ObjectTest();
+
 // words to guess
-
-var objectOfWords = {
-  battleship: "assets/images/chess.jpeg",
-  chess: "assets/images/chess.jpeg"
-};
-
-var newWord = [];
-var img;
-
-ObjectsIntoArray = Object.keys(objectOfWords);
-newWord = ObjectsIntoArray[Math.floor(Math.random() * ObjectsIntoArray.length)];
-img = objectOfWords[newWord];
-document.getElementById("wordImg").style.display = "";
-
-document.getElementById("wordImg").src = img;
-console.log(img);
-console.log(newWord);
-
 var words = [
   "battleship",
   "chess",
@@ -128,12 +167,16 @@ function writeToScreen() {
   ).innerHTML = wrongGuessedLetters.join(" ");
   document.getElementById("score").innerHTML = score;
   document.getElementById("guessLeft").innerHTML = NumberOfGuesses;
+  document.getElementById("wordImg").style.display = "none";
 }
 
 function winner() {
   score++;
-  alert("You're such a smarty!");
-  newgame();
+  document.getElementById("wordImg").style.display = "";
+  setTimeout(function() {
+    alert("You're such a smarty!");
+    newgame();
+  }, 10);
 }
 
 function checkLetterToWord() {
@@ -152,9 +195,7 @@ function checkLetterToWord() {
 
   if (wordHidden.indexOf("_") === -1) {
     wordHidden.splice(i, 1, storedLetter);
-    setTimeout(function() {
-      winner();
-    }, 1);
+    winner();
   }
 }
 
