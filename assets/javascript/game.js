@@ -68,13 +68,10 @@ function selectword() {
   ObjectsIntoArray = Object.keys(objectOfWords);
   wordSelect =
     ObjectsIntoArray[Math.floor(Math.random() * ObjectsIntoArray.length)];
-  wordSelect = wordSelect;
   img = objectOfWords[wordSelect];
   for (var i = 0; i < wordSelect.length; i++) {
     wordArray.push(wordSelect.charAt(i).toUpperCase());
     wordHidden.push("_");
-  }
-  for (var i = 0; i < wordSelect.length; i++) {
     if (wordSelect.charAt(i) === " ") {
       wordHidden.splice(i, 1, wordSelect.charAt(i));
     }
