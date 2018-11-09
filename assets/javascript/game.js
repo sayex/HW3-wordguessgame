@@ -27,7 +27,7 @@ var objectOfWords = {
   "connect four": "",
   "cross and circle game": "",
   scrabble: "",
-  "thirteen dead end drive": "",
+  "thirteen dead end drive": "assets/images/thirteenDDD.jpg",
   "logo board game": "",
   "the game of life": "",
   "scene it": "",
