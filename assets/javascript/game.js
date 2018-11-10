@@ -93,8 +93,8 @@ function wrongletter() {
     writeToScreen();
   }
   if (NumberOfGuesses === 0) {
-    setTimeout(function() {
-      alert("Good try. Word was " + "'" + wordSelect + "'");
+    setTimeout(function () {
+      alert("Good try. Word was " + "\"" + wordSelect.toUpperCase() + "\"");
       newgame();
     }, 1);
   }
@@ -129,7 +129,7 @@ function writeToScreen() {
 function winner() {
   score++;
   document.getElementById("wordImg").style.display = "";
-  setTimeout(function() {
+  setTimeout(function () {
     alert("You're such a smarty!");
     newgame();
   }, 10);
@@ -160,7 +160,7 @@ function checkLetterToWord() {
 // Listener for pressed letters
 
 function game() {
-  document.onkeypress = function(event) {
+  document.onkeypress = function (event) {
     storedLetter = event.key.toUpperCase();
 
     checkLetterToWord();
@@ -171,7 +171,7 @@ function game() {
 
 hidegame();
 if (gameStared === false) {
-  document.onkeypress = function(event) {
+  document.onkeypress = function (event) {
     document.getElementById("anyKey").style.display = "none";
     gameStared = true;
     selectword();
