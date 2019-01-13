@@ -13,3 +13,7 @@ In this assignment, you'll create one of two possible computer games: Word Guess
 #### Link to website
 
 <https://sayex.github.io/HW3-wordguessgame/>
+
+#### Profile Website
+
+<https://sayex.github.io/HW2-Responsiv…>
